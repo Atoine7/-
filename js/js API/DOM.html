@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red {
+            color: red
+        }
+    </style>
+</head>
+<body>
+<p>111</p>
+<ul id="list">
+
+</ul>
+</body>
+<script>
+  const p1 = document.querySelector('p')
+
+  //property形式
+  console.log(p1.style)
+  p1.style.width = '100px'
+  console.log(p1.style.width)
+  p1.className = 'red'
+  console.log(p1.className)
+  console.log(p1.nodeName)    //P
+  console.log(p1.nodeType)    //1
+
+  //attribute
+  p1.setAttribute('data-name', 'imooc')
+  console.log(p1.getAttribute('data-name'))
+  console.log(p1)
+
+  //不缓存DOM查询结果
+  for (let i= 0; i < document.getElementsByTagName('p').length; i++) {
+    //每次循环，都会计算length，频繁进行DOM查询
+  }
+
+  //缓存DOM查询结果
+  const pList = document.getElementsByTagName('p')
+  const length = pList.length
+  for (let i = 0; i < length; i++) {
+    //缓存length, 只进行一次DOM查询
+  }
+
+
+  const list = document.getElementById('list')
+  //创建一个文档片段，此时还没有插入到DOM树中
+  const frag = document.createDocumentFragment()
+
+  for(let i = 0; i < 10; i++) {
+    const li = document.createElement('li')
+    li.innerHTML = `List item ${i}`
+    frag.appendChild(li)
+  }
+  list.appendChild(frag)
+</script>
+</html>
