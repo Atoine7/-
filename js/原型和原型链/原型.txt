@@ -1,0 +1,8 @@
+原型关系
+1.每个class都有显示原型prototype
+2.每个实例都有隐式原型_proto_
+3.实例的_proto_指向对应class的prototype
+4.获取属性和方法时，先从自身属性和方法寻找，如果找不到则自动去_proto_中寻找
+
+instanceof沿着隐式原型网上找，对应谁的显示原型就成立
+

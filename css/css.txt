@@ -1,0 +1,109 @@
+html语义化标签：
+含义：让标签有自己的含义
+1.让人更容易读懂（增加代码可读性），便于团队开发和维护
+2.方便其它设备以语义的方式来渲染网页，让搜索引擎更容易读懂（SEO）
+
+块级元素和内联元素
+块级元素（独占一行）：div, h1, h2, table, form, ul, ol, p
+内联元素（不独占一行）：span, img, input, button, a, i, label
+
+CSS盒模型
+组成：content(内容), padding(内边距),border(边框),margin(外边距)
+一：content-box(W3C标准)(默认)
+width: 表示content(内容)的宽度，不包含padding 和 border
+二：border-box(IE标准)
+width: 表示(content)内容 + padding + border 的总和
+
+1.offsetWidth = (内容宽度 + 内边距 + 边框), 无外边距
+2.相邻元素的margin-top和margin-bottom会发生重叠，空白元素的p标签也会重叠
+
+margin负值问题：
+1.margin-top和margin-left负值，元素向上，向左移动
+2.margin-right负值，右侧元素左移，自身不受影响
+3.margin-bottom负值，下方元素上移，自身不受影响
+
+BFC:(B站博主：Libra121有一个视频讲的很好)
+块级格式化上下文
+一块独立渲染区域，内部元素的渲染不会影响边界以外的元素
+1.形成BFC的条件
+float不是none的元素
+position是absolute或fixed的元素
+overflow不是visible的块元素
+display是flex inline-block的元素
+2.BFC的作用
+避免外边距重叠
+清除浮动
+阻止元素被浮动元素覆盖
+
+float布局
+圣杯布局和双飞翼布局
+目的：
+三栏布局，中间一栏最先加载和渲染(内容最重要)
+两侧内容固定，中间内容随着宽度自适应
+一般用于PC网页
+技术总结：
+使用float布局
+两侧使用margin负值，以便和中间内容横向重叠
+防止中间内容被两侧覆盖，一个用padding一个用margin
+
+手写clearfix
+.clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+flex布局
+
+定位：
+relative: 依据自身定位
+absolute:依据最近一层的定位元素定位
+定位元素: absolute relative fixed body
+
+水平居中
+inline元素：text-align: center
+block元素：margin: auto
+absolute元素: left: 50% + margin-left负值
+
+垂直居中
+inline元素：line-height的值等于height
+absolute元素:top: 50% + margin-top负值
+absolute元素:top和left:50%, transform: translate(-50%, -50%)
+absolute元素:top, left, bottom, right = 0 + margin: auto
+
+line-height的继承
+1.父亲的line-height为具体的值，如30px，子孙则继承该值,
+2.如果为比例，如2/1.5，则继承该比例
+3.如果为百分比，如200%，则继承根据父亲的font-size乘以比例计算出来的值。(考点)
+
+响应式
+rem:
+px:绝对长度单位，最常用
+em：相对长度单位，相对于父元素，不常用
+rem：相对长度单位，相对于根元素，常用于响应式布局
+
+media-query，根据不同的屏幕宽度设置根元素font-size
+
+rem的弊端：'阶梯性'
+
+网页视口尺寸
+window.screen.height //屏幕高度
+window.innerHeight  //网页视口高度
+document.body.clientHeight //body高度
+
+vh:网页视口高度的1/100
+vw网页视口宽度的1/100
+vmax取两者最大值; vmin取两者最小值
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>文字1</p>
+    <p>文字2</p>
+    <p>文字3</p>
+</body>
+<script>
+    class jQuery {
+      constructor(selector) {
+        const result = document.querySelectorAll(selector);
+        const length = result.length;
+        for (let i = 0; i < length; i++) {
+          this[i] = result[i];
+        }
+        this.length = length;
+        this.selector = selector;
+      }
+      get(index) {
+        return this[index];
+      }
+      each(fn) {
+        for (let i = 0; i < this.length; i++) {
+          const elem = this[i];
+          fn(elem);
+        }
+      }
+      on(type, fn) {
+        return this.each(elem => {
+          elem.addEventListener(type, fn, false)
+        })
+      }
+
+
+    }
+    //插件
+    jQuery.prototype.dialog = function (info) {
+      alert(info);
+    }
+    //"造轮子"
+    class myJQury extends jQuery {
+      constructor(selector) {
+        super(selector);
+      }
+      //扩展自己的方法
+      addClass(className) {
+
+      }
+      style(data) {
+
+      }
+    }
+
+</script>
+</html>
+

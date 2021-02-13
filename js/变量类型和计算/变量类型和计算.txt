@@ -1,0 +1,47 @@
+值类型都是存在栈中
+引用类型的值存在堆中，栈中存的变量和内存地址，内存地址指向堆中的值
+这样存储是因为性能问题
+
+值类型：
+string, number, boolean, undefined, Symbol
+引用类型
+对象, 数组, null(特殊，指针指向空地址), function(特殊, 但不用于存储数据，所以没有“拷贝，复制函数”这一说)
+
+typeof：
+1.能判断所有值类型(string, number, boolean, undefined, Symbol)
+2.能判断函数
+3.能识别引用类型(不能再继续识别)
+
+类型转换
+const a = 1 00 + 10 //100
+const b = 100 + '10'  //'10010'
+const c = true + '10'  //'true10'
+
+==运算符：尽量尝试类型装换后让它相等
+100 == '100' //true
+0 == ''   //true
+0 == false //true
+false == ''  //true
+null == undefined  //true
+
+除了 == null之外，其他都一律用 ===，
+const obj = {x: 100}
+if(obj.a == null) {}
+相当于
+if(obj.a === null || obj.a ===undefined) {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
