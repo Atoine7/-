@@ -18,9 +18,11 @@ js执行中同步代码执行完，再执行异步
 1.同步代码，一行一行放在Call Stack执行
   遇到异步，会先"记录"下，等待时机(定时，网络请求等)
   时机到了，就移动到Callback Queue
-2.如Call Stack为空(即同步代码执行完)Event Loop开始工作
-  轮询查找Callback Queue,如有则移动到Call Stack执行
+2.如Call Stack为空(即同步代码执行完),会先执行当前的微任务，再尝试DOM渲染，最后Event Loop开始工作
+  ，执行宏任务，轮询查找Callback Queue,如有则移动到Call Stack执行
   然后继续轮询查找(永动机一样)
+
+每一次执行完一个宏任务后都会查看microtask queue，执行全部内容
 
 异步(setTimeout, ajax)使用回调,基于event loop
 DOM事件也使用回调，基于event loop，但是DOM事件不属于异步
@@ -39,11 +41,21 @@ catch正常返回resolved，里面有报错则返回rejected
 Promise then catch链式调用，但也是基于回调函数
 
 async/await是同步语法，彻底消灭回调函数
+和Promise并不互斥，是相辅相成的
+
+执行async函数，返回的是Promise对象
+await相当于Promise的then
+try...catch可捕获异常，代替了Promise的catch
 
 
+宏任务和微任务
+宏任务: setTimeout, setInterval, Ajax, DOM事件，由浏览器规定的
+微任务: Promise async/await， 由ES6语法规定的
+微任务执行时机比宏任务要早
+宏任务：DOM渲染后触发，如setTimeout
+微任务：DOM渲染前触发，如Promise
 
-
-
+执行微任务会等待时机放入micro task queue，不会经过Web APIs，因为Promise是ES规范，不是W3C规范
 
 
 

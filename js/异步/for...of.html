@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function muti(num) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(num * num)
+      }, 1000)
+    })
+  }
+
+  const nums = [1, 2, 3];
+
+  // nums.forEach(async (i) => {
+  //   const res = await muti(i)
+  //   console.log(res)
+  // })   ////同步循环，三个结果一起出来
+
+  (async function () {
+    for (let i of nums) {
+      const res = await muti(i)
+      console.log(res)
+    }
+  })()         //异步循环，第一个执行完才执行第二个
+
+</script>
+</body>
+</html>

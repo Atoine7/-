@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // (async function () {
+  //   const p4 = Promise.reject('err1');
+  //   const res = await p4;
+  //   console.log('res',res);  //不会走到这一步
+  // })()
+
+   async function async1 () {
+     console.log('async1 start')  //第二步
+     await async2() //await右边的会立即执行
+     //await的后面，都可以看做是callback里的内容，即异步
+     //类似,event loop，setTimeout(cb1)或Promise.resolve().then(() => {cb1})
+     console.log('async1 end')  //第五步
+   }
+
+   async function async2 () {
+     console.log('async2') //第三步
+   }
+
+  console.log('script start') //第一步
+  async1()
+  console.log('script end') //第四步
+</script>
+</body>
+</html>
