@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  //手写简易ajax
+  //get
+  function ajaxget() {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', 'test.json', true)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          alert(xhr.responseText)
+        }
+      }
+    }
+    xhr.send(null)
+  }
+
+  //post
+  function ajaxpost() {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', 'test.json', true)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          alert(xhr.responseText)
+        } else {
+          console.log('其他情况')
+        }
+      }
+    }
+    const postData = {
+      userName: 'zhangsan1',
+      password: 'xxx'
+    }
+    xhr.send(JSON.stringify(postData))
+  }
+
+  //promise
+  function ajaxPromiseGet() {
+    const p = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', 'test.json', true)
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            resolve(JSON.parse(xhr.responseText))
+          } else if (xhr.status === 404) {
+            reject(new Error('404 not found'))
+          }
+        }
+      }
+      xhr.send(null)
+    })
+    return p
+  }
+  ajaxPromiseGet().then(v =>{
+    console.log(v)
+  }).catch(r => {
+    console.log(r)
+  })
+</script>
+</html>

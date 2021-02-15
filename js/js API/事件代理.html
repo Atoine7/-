@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+</div>
+<button>点击增加一个a标签</button>
+</body>
+<script>
+    function bindEvent(elem, type, selector, fn) {
+      if (fn == null) {
+        fn = selector
+        selector = null
+      }
+      elem.addEventListener(type, function (e) {
+        const target = e.target
+        if (selector) {
+          //代理
+          if(target.matches(selector)) {
+            fn.call(target, e)
+          }
+        } else {
+          //普通绑定
+          fn.call(target, e)
+        }
+      })
+    }
+
+
+    const div1 = document.getElementById('div1')
+    bindEvent(div1, 'click', 'a', function (e) {
+      e.preventDefault()
+      alert(this.innerHTML)
+    })
+</script>
+</html>
