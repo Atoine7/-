@@ -75,7 +75,7 @@ http缓存
 目的：减少网络请求的数量和体积,(网络请求具有不稳定性)让页面加载更快
 可以被缓存的：--静态资源(js  css  img)
 
-强制缓存  
+强制缓存
 Cache-Control：
   在Response Headers中
   控制强制缓存的逻辑

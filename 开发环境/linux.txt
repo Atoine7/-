@@ -1,0 +1,17 @@
+ES6模块化，浏览器暂不支持
+ES6语法，浏览器并不完全支持
+压缩代码。整合代码，以让网页加载更快
+
+linux命令
+ls  查看文件夹
+mkdir xxx 创建文件夹
+rm -rf xxx   删除文件夹
+cd  xxx 进入目录
+mv  xx   xx   修改文件名
+mv  xx   path  移动文件
+cp  xx   xx   拷贝复制
+touch/vi   xx  新建文件
+cat  xx  查看文件内容
+head/tail  xx  查看文件开头或末尾几行
+grep  xx  path  查找
+

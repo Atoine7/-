@@ -3,7 +3,7 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
-
+./开发环境/webpack
 # Other files and folders
 .settings/
 
