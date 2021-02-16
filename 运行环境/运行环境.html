@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<img id="img1" src="preview.png" data-realsrc="abc.png">
+<script>
+    window.addEventListener('load', function () {
+      //页面的全部资源加载完才会执行，包括图片，视频等
+    })
+    document.addEventListener('DOMContentLoaded', function () {
+      //DOM渲染完即可执行，此时图片，视频还可能没有加载完
+    })
+
+    //图片懒加载
+    var img1 = document.getElementById('img1')
+    img1.src = img1.getAttribute('data-realsrc')
+</script>
+</html>
