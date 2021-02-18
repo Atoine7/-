@@ -8,28 +8,53 @@
 
 </body>
 <script>
-    //函数作为返回值
-    function create() {
-      let a = 100;
-      return function () {
-        console.log(a);
+  //自由变量示例  --内存会被释放
+  let a = 0
+
+  function fn1() {
+    let a1 = 100
+
+    function fn2() {
+      let a2 = 200
+
+      function fn3() {
+        let a3 = 300
+        return a + a1 + a2 + a3
       }
-    }
-    const fn = create();
-    const a = 200;
-    fn();   //100
 
-    //函数作为参数传递
-    function print(fn) {
-      const a =200;
-      fn();
+      fn3()
     }
+    fn2()
+  }
+  fn1()
 
-    const a = 100;
-    function fn() {
+
+  //闭包 --内存不会被释放
+  //函数作为返回值
+  function create() {
+    let a = 100;
+    return function () {
       console.log(a);
     }
-    print(fn);
+  }
+
+  const fn = create();
+  const a = 200;
+  fn();   //100
+
+  //函数作为参数传递
+  function print(fn) {
+    const a = 200;
+    fn();
+  }
+
+  const a = 100;
+
+  function fn() {
+    console.log(a);
+  }
+
+  print(fn);
 
 
 </script>

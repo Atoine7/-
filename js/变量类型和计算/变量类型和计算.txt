@@ -3,19 +3,19 @@
 这样存储是因为性能问题
 
 值类型：
-string, number, boolean, undefined, Symbol
+  string, number, boolean, undefined, Symbol
 引用类型
-对象, 数组, null(特殊，指针指向空地址), function(特殊, 但不用于存储数据，所以没有“拷贝，复制函数”这一说)
+  对象, 数组, null(特殊，指针指向空地址), function(特殊, 但不用于存储数据，所以没有“拷贝，复制函数”这一说)
 
 typeof：
-1.能判断所有值类型(string, number, boolean, undefined, Symbol)
-2.能判断函数
-3.能识别引用类型(不能再继续识别)
+  1.能判断所有值类型(string, number, boolean, undefined, Symbol)
+  2.能判断函数
+  3.能识别引用类型(不能再继续识别)
 
 类型转换
-const a = 1 00 + 10 //100
-const b = 100 + '10'  //'10010'
-const c = true + '10'  //'true10'
+  const a = 1 00 + 10 //100
+  const b = 100 + '10'  //'10010'
+  const c = true + '10'  //'true10'
 
 ==运算符：尽量尝试类型装换后让它相等
 100 == '100' //true
@@ -31,9 +31,57 @@ if(obj.a == null) {}
 if(obj.a === null || obj.a ===undefined) {}
 
 
+var和let const的区别
+  var是ES5语法，let const是ES6语法，var有变量提升
+  var和let是变量，可修改，const是常量，不可修改
+  let const有块级作用域，var没有
+
+强制类型转换:parseInt parseFloat toString
+隐式类型转换:if, 逻辑运算,==,+拼接字符串
+
+数组：
+split()和join()的区别
+
+pop,shift,push,unshift
+pop:删去数组最后一个值，返回值为删去的值
+shift:删去数组第一个值，返回值为删去的值
+push:在数组末尾加上一个值，返回值为数组的长度
+unshift：在数组开头加上一个值，返回值为数组的长度
+
+纯函数:
+  1.不改变原数组。2.返回一个数组
+  concat, map, filter, slice
+splice与slice区别
+
+函数声明和函数表达式的区别
+  函数声明
+    function fn() {...}
+  函数表达式
+    const fn = function() {...}
+  函数声明会在代码执行前预加载，而函数表达式不会
+
+new Object()和Object.create()区别
+  {}等同于new Object(),原型Object.prototype
+  Object.create(null)没有原型
+  Object.create({...})可指定原型，会把{...}放到他的原型上，而本身是空对象
 
 
-
+正则表达式
+  字符串字母开头，后面字母数字下划线，长度6-30
+  const reg = /^[a-zA-Z]\w{5,29}$/
+  常见正则表达 式
+  邮政编码：
+  /\d{6}/
+  小写英文开头：
+  /^[a-z]+$/
+  英文字母
+  /^[a-zA-Z]+$/
+  日期格式
+  /^\d{4}-\d{1,2}-\d{1,2}$/
+  用户名
+  /^[a-zA-Z]\w{5,17}$/
+  简单的IP地址匹配
+  /\d+\.\d+\.\d+\.\d+/
 
 
 

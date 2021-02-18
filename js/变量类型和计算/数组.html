@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // console.log('1-2-3'.split('-'))
+  // console.log([1,2,3].join('-'))
+
+  const arr = [10, 20, 30, 40, 50]
+
+  // //concat
+  // const arr1 = arr.concat([50, 60, 70])
+  // //map
+  // const arr2 = arr.map(num => num * 10)
+  // //filter
+  // const arr3 = arr.filter(num => num > 25)
+  // //slice
+  // const arr4 = arr.slice()
+
+  //slice用法
+  const arr1 = arr.slice(1, 4)  //[20, 30, 40]
+  const arr2 = arr.slice(2)    //[30, 40, 50]
+  const arr3 = arr.slice(-3)   //[30, 40, 50]
+
+  //splice(非纯函数)
+  const spliceRes = arr.splice(1, 2, 'a', 'b', 'c')
+  //从下标为1的位置，剪切2个数，再插入后面的数
+  console.log(spliceRes, arr)   //[20, 30], [10, "a", "b", "c", 40, 50]
+
+  //面试题
+  const res = [10, 20, 30].map(parseInt)
+  console.log(res)      //[10, NaN, NaN]
+  //拆解
+  [10, 20, 30].map((num, index) => {
+    return parseInt(num, index)
+  })
+</script>
+</html>

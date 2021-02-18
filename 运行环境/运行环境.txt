@@ -67,10 +67,14 @@ XSRF跨站请求伪造
   使用post接口
   增加验证，例如密码，短信验证码，指纹等
 
+获取当前页面url参数
+  传统方式，查找location.search
+  新API,URLSearchParams
 
-
-
-
+RAF requestAnimationFrame
+  要想动画流畅，更新频率要60帧/s，即16.67ms更新一次视图
+  setTimeout要手动控制频率，而RAF浏览器会自动控制
+  后台标签或隐藏iframe中，RAF会暂停，而setTimeout依然执行
 
 
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  //获取url中的值
+  //1.传统方式
+  //   function query(name) {
+  //     const search = location.search.substr(1)  //类似array.slice(1)
+  //     //search: 'a=10&b=20&c=30'
+  //     const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i')
+  //     const res = search.match(reg)
+  //     if (res === null) {
+  //       return null
+  //     }
+  //     console.log(res);
+  //     return res[2]
+  //   }
+  //   query('a')
+
+  //2.URLSearchParams
+  // function query(name) {
+  //   const search = location.search
+  //   const p = new URLSearchParams(search)
+  //   return p.get(name)
+  // }
+  // console.log(query('b'))
+
+
+  //将url参数解析为JS对象
+  //1.传统方式
+  // function queryToObj() {
+  //   const res = {}
+  //   const search = location.search.substr(1) //去掉'?'
+  //   search.split('&').forEach(paramStr => {
+  //     const arr = paramStr.split('=')
+  //     const key = arr[0]
+  //     const val = arr[1]
+  //     res[key] = val
+  //   })
+  //   return res
+  // }
+
+  //2.使用URLSearchParams
+  function queryToObj () {
+    const res = {}
+    const pList = new URLSearchParams(location.search)
+    console.log(pList)
+    pList.forEach((val, key) => {
+      res[key] = val
+    })
+    return res
+  }
+  console.log(queryToObj())
+</script>
+</html>
